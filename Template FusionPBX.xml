@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
-    <version>4.5</version>
-    <date>2023-01-03T00:00:00Z</date>
+    <version>5.0</version>
+    <date>2023-01-03T13:15:21Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -10,7 +10,7 @@
     <templates>
         <template>
             <template>Template App FusionPBX</template>
-            <name>Template App FusionPbx</name>
+            <name>Template App FusionPBX</name>
             <groups>
                 <group>
                     <name>Templates</name>
@@ -27,7 +27,7 @@
                     <key>freeswitch.calls-count-inbound</key>
                     <delay>30s</delay>
                     <trends>0</trends>
-                    <value_type>TEXT</value_type>
+                    <value_type>FLOAT</value_type>
                     <applications>
                         <application>
                             <name>FusionPBX</name>
@@ -39,7 +39,7 @@
                     <key>freeswitch.calls-count-outbound</key>
                     <delay>30s</delay>
                     <trends>0</trends>
-                    <value_type>TEXT</value_type>
+                    <value_type>FLOAT</value_type>
                     <applications>
                         <application>
                             <name>FusionPBX</name>
