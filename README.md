@@ -2,8 +2,8 @@
 
 Monitoring template for FusionPBX.
 
-**Installation**
+## Installation
 
 Import the template XML file to Zabbix server.
 
-Put the parameters file on the FusionPBX server in the Zabbix Agent config directory.
+Put the parameters file `userparameter_fusionpbx.conf` on the FusionPBX server in the Zabbix Agent config directory.
