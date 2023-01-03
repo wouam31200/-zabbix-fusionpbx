@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>4.4</version>
+    <date>2021-12-17T04:32:33Z</date>
+    <groups>
+        <group>
+            <name>Templates</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Template OS Linux - Freeswitch</template>
+            <name>Template OS Linux - Freeswitch</name>
+            <groups>
+                <group>
+                    <name>Templates</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>Freeswitch</name>
+                </application>
+            </applications>
+            <items>
+                <item>
+                    <name>Freeswitch: Current calls count inbound</name>
+                    <key>freeswitch.calls-count-inbound</key>
+                    <delay>30s</delay>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <applications>
+                        <application>
+                            <name>Freeswitch</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Freeswitch: Current calls count outbound</name>
+                    <key>freeswitch.calls-count-outbound</key>
+                    <delay>30s</delay>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <applications>
+                        <application>
+                            <name>Freeswitch</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Freeswitch: Current calls count total</name>
+                    <key>freeswitch.calls-count-total</key>
+                    <delay>30s</delay>
+                    <units>calls</units>
+                    <applications>
+                        <application>
+                            <name>Freeswitch</name>
+                        </application>
+                    </applications>
+                    <request_method>POST</request_method>
+                </item>
+                <item>
+                    <name>Freeswitch: Current channels count</name>
+                    <key>freeswitch.channels-count</key>
+                    <delay>30s</delay>
+                    <units>channels</units>
+                    <applications>
+                        <application>
+                            <name>Freeswitch</name>
+                        </application>
+                    </applications>
+                    <request_method>POST</request_method>
+                </item>
+                <item>
+                    <name>Freeswitch: Current Registration Count</name>
+                    <key>freeswitch.registration-count</key>
+                    <value_type>FLOAT</value_type>
+                    <units>Reg</units>
+                    <applications>
+                        <application>
+                            <name>Freeswitch</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Freeswitch: Current sessions</name>
+                    <key>freeswitch.sessions</key>
+                    <delay>30s</delay>
+                    <units>sessions</units>
+                    <applications>
+                        <application>
+                            <name>Freeswitch</name>
+                        </application>
+                    </applications>
+                    <request_method>POST</request_method>
+                </item>
+                <item>
+                    <name>Epmd processes</name>
+                    <key>proc.num[epmd]</key>
+                    <delay>30</delay>
+                    <status>DISABLED</status>
+                    <applications>
+                        <application>
+                            <name>Freeswitch</name>
+                        </application>
+                    </applications>
+                    <request_method>POST</request_method>
+                    <triggers>
+                        <trigger>
+                            <expression>{last(0)}&lt;1</expression>
+                            <name>No epmd process running</name>
+                            <status>DISABLED</status>
+                            <priority>HIGH</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>Freeswitch processes</name>
+                    <key>proc.num[freeswitch]</key>
+                    <delay>30s</delay>
+                    <applications>
+                        <application>
+                            <name>Freeswitch</name>
+                        </application>
+                    </applications>
+                    <request_method>POST</request_method>
+                    <triggers>
+                        <trigger>
+                            <expression>{last(0)}&lt;1</expression>
+                            <name>No freeswitch process running</name>
+                            <priority>HIGH</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+            </items>
+        </template>
+    </templates>
+    <graphs>
+        <graph>
+            <name>Freeswitch: Current Calls</name>
+            <graph_items>
+                <graph_item>
+                    <drawtype>GRADIENT_LINE</drawtype>
+                    <color>E53935</color>
+                    <item>
+                        <host>Template OS Linux - Freeswitch</host>
+                        <key>freeswitch.calls-count-total</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <drawtype>GRADIENT_LINE</drawtype>
+                    <color>00FF00</color>
+                    <item>
+                        <host>Template OS Linux - Freeswitch</host>
+                        <key>freeswitch.calls-count-inbound</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>2</sortorder>
+                    <drawtype>GRADIENT_LINE</drawtype>
+                    <color>0040FF</color>
+                    <item>
+                        <host>Template OS Linux - Freeswitch</host>
+                        <key>freeswitch.calls-count-outbound</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <name>Freeswitch: Current Registration Count</name>
+            <graph_items>
+                <graph_item>
+                    <drawtype>GRADIENT_LINE</drawtype>
+                    <color>FF6F00</color>
+                    <calc_fnc>ALL</calc_fnc>
+                    <item>
+                        <host>Template OS Linux - Freeswitch</host>
+                        <key>freeswitch.registration-count</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <name>Freeswitch: Stats</name>
+            <graph_items>
+                <graph_item>
+                    <color>0000CC</color>
+                    <item>
+                        <host>Template OS Linux - Freeswitch</host>
+                        <key>freeswitch.calls-count-total</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <color>00DD00</color>
+                    <item>
+                        <host>Template OS Linux - Freeswitch</host>
+                        <key>freeswitch.channels-count</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>2</sortorder>
+                    <color>DDDD00</color>
+                    <item>
+                        <host>Template OS Linux - Freeswitch</host>
+                        <key>freeswitch.sessions</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+    </graphs>
+</zabbix_export>
