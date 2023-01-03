@@ -94,26 +94,6 @@
                     <request_method>POST</request_method>
                 </item>
                 <item>
-                    <name>Epmd processes</name>
-                    <key>proc.num[epmd]</key>
-                    <delay>30</delay>
-                    <status>DISABLED</status>
-                    <applications>
-                        <application>
-                            <name>FusionPBX</name>
-                        </application>
-                    </applications>
-                    <request_method>POST</request_method>
-                    <triggers>
-                        <trigger>
-                            <expression>{last(0)}&lt;1</expression>
-                            <name>No epmd process running</name>
-                            <status>DISABLED</status>
-                            <priority>HIGH</priority>
-                        </trigger>
-                    </triggers>
-                </item>
-                <item>
                     <name>FusionPBX processes</name>
                     <key>proc.num[freeswitch]</key>
                     <delay>30s</delay>
