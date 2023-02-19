@@ -1,0 +1,11 @@
+UserParameter=freeswitch.calls-count-total, fs_cli -x 'show calls count as xml' | cut -d'"' -f2
+UserParameter=freeswitch.calls-count-inbound, fs_cli -x 'show calls count inbound as xml' | sed '/^$/d' | sed 's/ total.//g'
+UserParameter=freeswitch.calls-count-outbound, fs_cli -x 'show calls count outbound as xml' | sed '/^$/d' | sed 's/ total.//g'
+UserParameter=freeswitch.channels-count, fs_cli -x 'show channels count as xml' | cut -d'"' -f2
+UserParameter=freeswitch.sessions, fs_cli -x 'show status' | grep 'out of max' | cut -d' ' -f1
+UserParameter=freeswitch.registration-count, fs_cli -x 'sofia status profile internal reg' | sed 's/Total items returned:|//' | tail -3 | sed -n '1p'
+UserParameter=freeswitch.calls-count-total-by-domain, fs_cli -x 'show calls count as xml' -d '%' | grep -oP '(?<=<domain name=")[^"]+' | xargs -I{} fs_cli -x 'show calls count as xml' -d {} | grep '<count type="total"' | cut -d'"' -f2 | awk '{s+=$1} END {print s}'
+UserParameter=freeswitch.calls-count-inbound-by-domain, fs_cli -x 'show calls count inbound as xml' -d '%' | grep -oP '(?<=<domain name=")[^"]+' | xargs -I{} fs_cli -x 'show calls count inbound as xml' -d {} | grep '<count type="total"' | cut -d'"' -f2 | awk '{s+=$1} END {print s}'
+UserParameter=freeswitch.calls-count-outbound-by-domain, fs_cli -x 'show calls count outbound as xml' -d '%' | grep -oP '(?<=<domain name=")[^"]+' | xargs -I{} fs_cli -x 'show calls count outbound as xml' -d {} | grep '<count type="total"' | cut -d'"' -f2 | awk '{s+=$1} END {print s}'
+UserParameter=freeswitch.channels-count-by-domain, fs_cli -x 'show channels count as xml' -d '%' | grep -oP '(?<=<domain name=")[^"]+' | xargs -I{} fs_cli -x 'show channels count as xml' -d {} | grep '<count type="total"' | cut -d'"' -f2 | awk '{s+=$1} END {print s}'
+UserParameter=freeswitch.registration-count-by-domain, fs_cli -x 'sofia status profile internal reg' -d '%' | grep -oP '(?<=<Profile name=")[^"]+' | xargs -I{} fs_cli -x 'sofia status profile internal reg' -d {} | sed 's/Total items returned:|//' | tail -3 | sed -n '1p' | awk '{s+=$1} END {print s}'
